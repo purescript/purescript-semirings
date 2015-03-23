@@ -1,0 +1,12 @@
+{
+  "name": "purescript-semirings",
+  "moduleType": [
+    "node"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "output"
+  ]
+}
