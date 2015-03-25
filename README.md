@@ -68,3 +68,38 @@ instance ordFree :: (Ord a) => Ord (Free a)
 ``` purescript
 instance semiringFree :: Semiring (Free a)
 ```
+
+
+#### `functorFree`
+
+``` purescript
+instance functorFree :: Functor Free
+```
+
+
+#### `applyFree`
+
+``` purescript
+instance applyFree :: Apply Free
+```
+
+
+#### `applicativeFree`
+
+``` purescript
+instance applicativeFree :: Applicative Free
+```
+
+
+#### `foldableFree`
+
+``` purescript
+instance foldableFree :: Foldable Free
+```
+
+
+#### `traversableFree`
+
+``` purescript
+instance traversableFree :: Traversable Free
+```
