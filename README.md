@@ -26,14 +26,6 @@ free :: forall a. a -> Free a
 
 Lift a value of type `a` to a value of type `Free a`
 
-#### `mapFree`
-
-``` purescript
-mapFree :: forall a b. (a -> b) -> Free a -> Free b
-```
-
-Apply function `fn` to every element of `Free a` 
-
 #### `liftFree`
 
 ``` purescript
@@ -49,13 +41,6 @@ lowerFree :: forall a s. (Semiring s) => (Free a -> s) -> a -> s
 ```
 
 `Free` is left adjoint to the forgetful functor from `Semiring`s to types.
-
-#### `sequenceFree`
-
-``` purescript
-sequenceFree :: forall a m. (Monad m) => Free (m a) -> m (Free a)
-```
-
 
 #### `showFree`
 
@@ -89,4 +74,32 @@ instance semiringFree :: Semiring (Free a)
 
 ``` purescript
 instance functorFree :: Functor Free
+```
+
+
+#### `applyFree`
+
+``` purescript
+instance applyFree :: Apply Free
+```
+
+
+#### `applicativeFree`
+
+``` purescript
+instance applicativeFree :: Applicative Free
+```
+
+
+#### `foldableFree`
+
+``` purescript
+instance foldableFree :: Foldable Free
+```
+
+
+#### `traversableFree`
+
+``` purescript
+instance traversableFree :: Traversable Free
 ```

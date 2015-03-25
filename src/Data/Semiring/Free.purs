@@ -4,14 +4,13 @@ module Data.Semiring.Free
   , free
   , liftFree
   , lowerFree
-  , mapFree
-  , sequenceFree
-   
   ) where
  
 import Data.Array
-import Data.Foldable (foldl)
-import Data.Traversable (sequence)
+import Data.Foldable 
+import Data.Traversable 
+import Data.Monoid
+
  
 -- | The free `Semiring` for a type `a`.
 newtype Free a = Free [[a]]
@@ -24,10 +23,7 @@ runFree (Free xs) = xs
 free :: forall a. a -> Free a
 free a = Free [[a]]
 
--- | Apply function `fn` to every element of `Free a` 
-mapFree :: forall a b. (a -> b) -> Free a -> Free b
-mapFree fn (Free xss) =
-  Free $ (fn <$>) <$> xss 
+
 
 -- | `Free` is left adjoint to the forgetful functor from `Semiring`s to types.
 liftFree :: forall a s. (Semiring s) => (a -> s) -> Free a -> s
@@ -40,12 +36,6 @@ liftFree f (Free xss) = sum (map (product <<< map f) xss)
 lowerFree :: forall a s. (Semiring s) => (Free a -> s) -> a -> s
 lowerFree f a = f (free a)
 
-sequenceFree :: forall a m. (Monad m) => Free (m a) -> m (Free a)
-sequenceFree freeM = do
-  bss <- sequence $ sequence <$> (runFree freeM)
-  let freess = (free <$>) <$> bss
-  pure $ foldl (+) zero $ (foldl (*) one) <$> freess
- 
 instance showFree :: (Show a) => Show (Free a) where
   show (Free xss) = "(Free " <> show xss <> ")"
  
@@ -66,4 +56,22 @@ instance semiringFree :: Semiring (Free a) where
   one = Free [[]]
 
 instance functorFree :: Functor Free where
-  (<$>) = mapFree
+  (<$>) fn (Free xss) = Free $ (fn <$>) <$> xss
+
+instance applyFree :: Apply Free where
+  (<*>) (Free fnss) (Free xss) = Free $ do
+    fns <- fnss
+    xs <- xss
+    pure $ fns <*> xs
+
+instance applicativeFree :: Applicative Free where
+  pure = free
+
+instance foldableFree :: Foldable Free where
+  foldl fn accum (Free xss) = foldl (foldl fn) accum xss
+  foldr fn accum (Free xss) = foldr (flip $ foldr fn) accum xss
+  foldMap fn (Free xss) = fold $ foldMap (fn <$>) xss
+
+instance traversableFree :: Traversable Free where
+  sequence (Free xss) = Free <$> (sequence $ sequence <$> xss)
+  traverse fn freeA = sequence (fn <$> freeA)
