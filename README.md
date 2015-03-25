@@ -26,6 +26,14 @@ free :: forall a. a -> Free a
 
 Lift a value of type `a` to a value of type `Free a`
 
+#### `mapFree`
+
+``` purescript
+mapFree :: forall a b. (a -> b) -> Free a -> Free b
+```
+
+Apply function `fn` to every element of `Free a` 
+
 #### `liftFree`
 
 ``` purescript

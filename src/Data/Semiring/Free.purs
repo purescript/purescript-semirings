@@ -4,6 +4,7 @@ module Data.Semiring.Free
   , free
   , liftFree
   , lowerFree
+  , mapFree
   ) where
  
 import Data.Array
