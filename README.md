@@ -68,3 +68,10 @@ instance ordFree :: (Ord a) => Ord (Free a)
 ``` purescript
 instance semiringFree :: Semiring (Free a)
 ```
+
+
+#### `functorFree`
+
+``` purescript
+instance functorFree :: Functor Free
+```

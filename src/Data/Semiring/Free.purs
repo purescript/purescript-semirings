@@ -19,7 +19,12 @@ runFree (Free xs) = xs
 -- | Lift a value of type `a` to a value of type `Free a`
 free :: forall a. a -> Free a
 free a = Free [[a]]
- 
+
+-- | Apply function `fn` to every element of `Free a` 
+mapFree :: forall a b. (a -> b) -> Free a -> Free b
+mapFree fn (Free xss) =
+  Free $ (fn <$>) <$> xss 
+
 -- | `Free` is left adjoint to the forgetful functor from `Semiring`s to types.
 liftFree :: forall a s. (Semiring s) => (a -> s) -> Free a -> s
 liftFree f (Free xss) = sum (map (product <<< map f) xss)
@@ -49,3 +54,6 @@ instance semiringFree :: Semiring (Free a) where
     ys <- yss
     return (xs <> ys)
   one = Free [[]]
+
+instance functorFree :: Functor Free where
+  (<$>) = mapFree
