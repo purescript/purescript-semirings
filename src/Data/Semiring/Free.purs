@@ -5,10 +5,13 @@ module Data.Semiring.Free
   , liftFree
   , lowerFree
   , mapFree
+  , sequenceFree
+   
   ) where
  
 import Data.Array
 import Data.Foldable (foldl)
+import Data.Traversable (sequence)
  
 -- | The free `Semiring` for a type `a`.
 newtype Free a = Free [[a]]
@@ -36,6 +39,12 @@ liftFree f (Free xss) = sum (map (product <<< map f) xss)
 -- | `Free` is left adjoint to the forgetful functor from `Semiring`s to types.
 lowerFree :: forall a s. (Semiring s) => (Free a -> s) -> a -> s
 lowerFree f a = f (free a)
+
+sequenceFree :: forall a m. (Monad m) => Free (m a) -> m (Free a)
+sequenceFree freeM = do
+  bss <- sequence $ sequence <$> (runFree freeM)
+  let freess = (free <$>) <$> bss
+  pure $ foldl (+) zero $ (foldl (*) one) <$> freess
  
 instance showFree :: (Show a) => Show (Free a) where
   show (Free xss) = "(Free " <> show xss <> ")"

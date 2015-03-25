@@ -50,6 +50,13 @@ lowerFree :: forall a s. (Semiring s) => (Free a -> s) -> a -> s
 
 `Free` is left adjoint to the forgetful functor from `Semiring`s to types.
 
+#### `sequenceFree`
+
+``` purescript
+sequenceFree :: forall a m. (Monad m) => Free (m a) -> m (Free a)
+```
+
+
 #### `showFree`
 
 ``` purescript
