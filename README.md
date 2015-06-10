@@ -12,4 +12,4 @@ bower install purescript-semirings
 
 ## Module documentation
 
-- [Data.Semiring.Free](docs/Data.Semiring.Free.md)
+- [Data.Semiring.Free](docs/Data/Semiring/Free.md)

@@ -10,6 +10,7 @@
     "output"
   ],
   "dependencies": {
-    "purescript-foldable-traversable": "^0.4.0"
+    "purescript-foldable-traversable": "^0.4.0",
+    "purescript-lists": "^0.7.0"
   }
 }
