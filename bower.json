@@ -1,16 +1,25 @@
 {
   "name": "purescript-semirings",
-  "moduleType": [
-    "node"
+  "homepage": "https://github.com/purescript/purescript-semirings",
+  "description": "Semiring instances and functions",
+  "keywords": [
+    "purescript"
   ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/purescript/purescript-semirings.git"
+  },
   "ignore": [
     "**/.*",
-    "node_modules",
     "bower_components",
-    "output"
+    "node_modules",
+    "output",
+    "test",
+    "bower.json",
+    "package.json"
   ],
   "dependencies": {
-    "purescript-foldable-traversable": "^0.4.0",
     "purescript-lists": "^0.7.0"
   }
 }
