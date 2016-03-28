@@ -6,11 +6,11 @@ module Data.Semiring.Free
   , lowerFree
   ) where
 
-import Prelude
+import Prelude (class Applicative, class Apply, class Functor, class Semiring, class Ord, class Eq, class Show, (<$>), ($), flip, apply, pure, bind, map, (<>), return, compare, (==), show, (<<<))
 
 import Data.List (List(..), singleton)
-import Data.Foldable (Foldable, fold, foldl, foldr, foldMap, sum, product)
-import Data.Traversable (Traversable, sequence)
+import Data.Foldable (class Foldable, fold, foldl, foldr, foldMap, sum, product)
+import Data.Traversable (class Traversable, sequence)
 
 -- | The free `Semiring` for a type `a`.
 newtype Free a = Free (List (List a))
