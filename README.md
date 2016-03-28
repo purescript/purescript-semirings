@@ -12,6 +12,6 @@ Semiring instances and functions
 bower install purescript-semirings
 ```
 
-## Module documentation
+## Documentation
 
-- [Data.Semiring.Free](docs/Data/Semiring/Free.md)
+Module documentation is [published on Pursuit](http://pursuit.purescript.org/packages/purescript-semirings).

@@ -1,12 +1,12 @@
 module Data.Semiring.Free
-  ( Free()
+  ( Free
   , runFree
   , free
   , liftFree
   , lowerFree
   ) where
 
-import Prelude (class Applicative, class Apply, class Functor, class Semiring, class Ord, class Eq, class Show, (<$>), ($), flip, apply, pure, bind, map, (<>), return, compare, (==), show, (<<<))
+import Prelude
 
 import Data.List (List(..), singleton)
 import Data.Foldable (class Foldable, fold, foldl, foldr, foldMap, sum, product)
@@ -24,20 +24,20 @@ free :: forall a. a -> Free a
 free a = Free (singleton (singleton a))
 
 -- | `Free` is left adjoint to the forgetful functor from `Semiring`s to types.
-liftFree :: forall a s. (Semiring s) => (a -> s) -> Free a -> s
+liftFree :: forall a s. Semiring s => (a -> s) -> Free a -> s
 liftFree f (Free xss) = sum (map (product <<< map f) xss)
 
 -- | `Free` is left adjoint to the forgetful functor from `Semiring`s to types.
-lowerFree :: forall a s. (Semiring s) => (Free a -> s) -> a -> s
+lowerFree :: forall a s. Semiring s => (Free a -> s) -> a -> s
 lowerFree f a = f (free a)
 
-instance showFree :: (Show a) => Show (Free a) where
-  show (Free xss) = "Free (" <> show xss <> ")"
+instance showFree :: Show a => Show (Free a) where
+  show (Free xss) = "(Free " <> show xss <> ")"
 
-instance eqFree :: (Eq a) => Eq (Free a) where
+instance eqFree :: Eq a => Eq (Free a) where
   eq (Free xss) (Free yss) = xss == yss
 
-instance ordFree :: (Ord a) => Ord (Free a) where
+instance ordFree :: Ord a => Ord (Free a) where
   compare (Free xss) (Free yss) = compare xss yss
 
 instance semiringFree :: Semiring (Free a) where
@@ -46,7 +46,7 @@ instance semiringFree :: Semiring (Free a) where
   mul (Free xss) (Free yss) = Free do
     xs <- xss
     ys <- yss
-    return (xs <> ys)
+    pure (xs <> ys)
   one = Free (singleton Nil)
 
 instance functorFree :: Functor Free where
@@ -64,7 +64,7 @@ instance applicativeFree :: Applicative Free where
 instance foldableFree :: Foldable Free where
   foldl fn accum (Free xss) = foldl (foldl fn) accum xss
   foldr fn accum (Free xss) = foldr (flip $ foldr fn) accum xss
-  foldMap fn (Free xss) = fold $ foldMap (fn <$>) xss
+  foldMap fn (Free xss) = fold $ foldMap (map fn) xss
 
 instance traversableFree :: Traversable Free where
   sequence (Free xss) = Free <$> (sequence $ sequence <$> xss)
