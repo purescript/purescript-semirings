@@ -2,9 +2,6 @@
   "name": "purescript-semirings",
   "homepage": "https://github.com/purescript/purescript-semirings",
   "description": "Semiring instances and functions",
-  "keywords": [
-    "purescript"
-  ],
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -20,6 +17,6 @@
     "package.json"
   ],
   "dependencies": {
-    "purescript-lists": "^0.7.0"
+    "purescript-lists": "^1.0.0-rc.1"
   }
 }
