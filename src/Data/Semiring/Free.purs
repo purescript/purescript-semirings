@@ -1,6 +1,5 @@
 module Data.Semiring.Free
-  ( Free
-  , runFree
+  ( Free(..)
   , free
   , liftFree
   , lowerFree
@@ -8,16 +7,15 @@ module Data.Semiring.Free
 
 import Prelude
 
-import Data.List (List(..), singleton)
 import Data.Foldable (class Foldable, fold, foldl, foldr, foldMap, sum, product)
+import Data.List (List(..), singleton)
+import Data.Newtype (class Newtype)
 import Data.Traversable (class Traversable, sequence)
 
 -- | The free `Semiring` for a type `a`.
 newtype Free a = Free (List (List a))
 
--- | Unpack a value of type `Free a`.
-runFree :: forall a. Free a -> List (List a)
-runFree (Free xs) = xs
+derive instance newtypeFree :: Newtype (Free a) _
 
 -- | Lift a value of type `a` to a value of type `Free a`
 free :: forall a. a -> Free a
