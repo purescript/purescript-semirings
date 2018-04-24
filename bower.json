@@ -17,6 +17,6 @@
     "package.json"
   ],
   "dependencies": {
-    "purescript-lists": "^4.0.0"
+    "purescript-lists": "#compiler/0.12"
   }
 }
