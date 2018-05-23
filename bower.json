@@ -1,8 +1,7 @@
 {
   "name": "purescript-semirings",
   "homepage": "https://github.com/purescript/purescript-semirings",
-  "description": "Semiring instances and functions",
-  "license": "MIT",
+  "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
     "url": "git://github.com/purescript/purescript-semirings.git"
@@ -17,6 +16,9 @@
     "package.json"
   ],
   "dependencies": {
-    "purescript-lists": "^4.0.0"
+    "purescript-foldable-traversable": "^4.0.0",
+    "purescript-lists": "^5.0.0",
+    "purescript-newtype": "^3.0.0",
+    "purescript-prelude": "^4.0.0"
   }
 }
