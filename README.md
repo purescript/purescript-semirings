@@ -5,6 +5,40 @@
 
 Semiring instances and functions
 
+## Example
+
+```purs
+toFree = Free <<< Data.List.fromFoldable <<< map (Data.List.fromFoldable)
+
+main :: Effect Unit
+main = do
+  logShow $ (toFree [[1, 2]]) + (toFree [[3, 4]])
+  -- (Free ((1 : 2 : Nil) : (3 : 4 : Nil) : Nil))
+
+  logShow $ (toFree [[1, 2]]) * (toFree [[3, 4]])
+  -- (Free ((1 : 2 : 3 : 4 : Nil) : Nil))
+
+  logShow $ (toFree [[1], [2]]) + (toFree [[3, 4]])
+  -- (Free ((1 : Nil) : (2 : Nil) : (3 : 4 : Nil) : Nil))
+
+  logShow $ (toFree [[1], [2]]) * (toFree [[3, 4]])
+  -- (Free ((1 : 3 : 4 : Nil) : (2 : 3 : 4 : Nil) : Nil))
+
+  --------------------------
+
+  logShow $ zero + (toFree [[1, 2], [3, 4]])
+  -- (Free ((1 : 2 : Nil) : (3 : 4 : Nil) : Nil))
+
+  logShow $ one + (toFree [[1, 2], [3, 4]])
+  -- (Free (Nil : (1 : 2 : Nil) : (3 : 4 : Nil) : Nil))
+
+  logShow $ zero * (toFree [[1, 2], [3, 4]])
+  -- (Free Nil)
+
+  logShow $ one * (toFree [[1, 2], [3, 4]])
+  -- (Free ((1 : 2 : Nil) : (3 : 4 : Nil) : Nil))
+```
+
 ## Installation
 
 ```
