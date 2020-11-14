@@ -16,9 +16,9 @@
     "package.json"
   ],
   "dependencies": {
-    "purescript-foldable-traversable": "^4.0.0",
-    "purescript-lists": "^5.0.0",
-    "purescript-newtype": "^3.0.0",
-    "purescript-prelude": "^4.0.0"
+    "purescript-foldable-traversable": "master",
+    "purescript-lists": "master",
+    "purescript-newtype": "master",
+    "purescript-prelude": "master"
   }
 }
