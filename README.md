@@ -1,14 +1,14 @@
 # purescript-semirings
 
 [![Latest release](http://img.shields.io/github/release/purescript/purescript-semirings.svg)](https://github.com/purescript/purescript-semirings/releases)
-[![Build status](https://travis-ci.org/purescript/purescript-semirings.svg?branch=master)](https://travis-ci.org/purescript/purescript-semirings)
+[![Build Status](https://github.com/purescript/purescript-semirings/workflows/CI/badge.svg?branch=master)](https://github.com/purescript/purescript-semirings/actions?query=workflow%3ACI+branch%3Amaster)
 
 Semiring instances and functions
 
 ## Installation
 
 ```
-bower install purescript-semirings
+spago install semirings
 ```
 
 ## Documentation
