@@ -5,16 +5,19 @@ Notable changes to this project are documented in this file. The format is based
 ## [Unreleased]
 
 Breaking changes:
+- Added support for PureScript 0.14 and dropped support for all previous versions (#16)
 
 New features:
 
 Bugfixes:
 
 Other improvements:
+- Migrated CI to GitHub Actions and updated installation instructions to use Spago (#17)
+- Added a changelog and pull request template (#18, #19)
 
 ## [v5.0.0](https://github.com/purescript/purescript-semirings/releases/tag/v5.0.0) - 2018-05-23
 
-Updated for PureScript 0.12
+- Updated for PureScript 0.12
 
 ## [v4.0.0](https://github.com/purescript/purescript-semirings/releases/tag/v4.0.0) - 2017-03-27
 
@@ -44,18 +47,16 @@ This release works with versions 0.7.\* of the PureScript compiler. It will not 
 
 ## [v0.2.0-rc.1](https://github.com/purescript/purescript-semirings/releases/tag/v0.2.0-rc.1) - 2015-06-10
 
-Initial release candidate of the library intended for the 0.7 compiler.
+- Initial release candidate of the library intended for the 0.7 compiler.
 
 ## [v0.1.2](https://github.com/purescript/purescript-semirings/releases/tag/v0.1.2) - 2015-03-25
 
-More instances for `Free` (@cryogenian)
+- More instances for `Free` (@cryogenian)
 
 ## [v0.1.1](https://github.com/purescript/purescript-semirings/releases/tag/v0.1.1) - 2015-03-23
 
-Remove duplicated Bower file.
+- Remove duplicated Bower file.
 
 ## [v0.1.0](https://github.com/purescript/purescript-semirings/releases/tag/v0.1.0) - 2015-03-23
 
-Initial release:
-- Add free semiring
-
+- Initial release
