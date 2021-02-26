@@ -4,7 +4,7 @@
   "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
-    "url": "git://github.com/purescript/purescript-semirings.git"
+    "url": "https://github.com/purescript/purescript-semirings.git"
   },
   "ignore": [
     "**/.*",
@@ -16,9 +16,9 @@
     "package.json"
   ],
   "dependencies": {
-    "purescript-foldable-traversable": "master",
-    "purescript-lists": "master",
-    "purescript-newtype": "master",
-    "purescript-prelude": "master"
+    "purescript-foldable-traversable": "^5.0.0",
+    "purescript-lists": "^6.0.0",
+    "purescript-newtype": "^4.0.0",
+    "purescript-prelude": "^5.0.0"
   }
 }
