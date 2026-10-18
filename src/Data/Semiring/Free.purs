@@ -7,7 +7,7 @@ module Data.Semiring.Free
 
 import Prelude
 
-import Data.Foldable (class Foldable, fold, foldl, foldr, foldMap, sum, product)
+import Data.Foldable (class Foldable, fold, foldMap, foldl, foldr, product, sum)
 import Data.List (List(..), singleton)
 import Data.Newtype (class Newtype)
 import Data.Traversable (class Traversable, sequence)
